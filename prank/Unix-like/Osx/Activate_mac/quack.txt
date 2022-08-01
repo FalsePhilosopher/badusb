@@ -1,1 +1,0 @@
-REM Open term and install homebrew and run or wget zip with dmg and extract/install/run
