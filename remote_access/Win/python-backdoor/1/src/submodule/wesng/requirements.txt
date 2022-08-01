@@ -1,1 +1,0 @@
-chardet; platform_system == "Windows"
