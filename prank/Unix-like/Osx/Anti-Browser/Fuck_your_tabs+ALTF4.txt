@@ -1,0 +1,12 @@
+REM FalsePhilosopher
+REM WIP
+REM Target osx
+ID 05ac:021e Apple:Keyboard
+DELAY 300
+COMMAND SPACE
+DELAY 300
+STRING terminal.app
+DELAY 200
+ENTER
+DELAY 500
+REM write some bash to create CTRL+w and ALT+F4 script and run it.

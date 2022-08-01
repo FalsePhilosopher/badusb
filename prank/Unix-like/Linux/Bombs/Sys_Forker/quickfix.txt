@@ -1,0 +1,16 @@
+REM FalsePhilosopher
+REM He needs some milk! Quick fix for the termB script for now.
+DELAY 300
+CRTL-ALT t
+DELAY 2000
+STRING rm ~/.zshrc
+DELAY 200
+ENTER
+DELAY 200
+STRING cp /etc/skel/.bashrc ~/
+DELAY 200
+ENTER
+DLEAY 200
+STRING source ~/.bashrc
+DELAY 200
+ENTER

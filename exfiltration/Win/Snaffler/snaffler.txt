@@ -1,0 +1,8 @@
+REM script to download and run snaffler https://github.com/SnaffCon/Snaffler
+REM VID/PID
+DELAY 300
+REM insert cmd open+delay
+REM insert download of exe+delay
+REM insert exfil+delay
+REM clean up+delay
+

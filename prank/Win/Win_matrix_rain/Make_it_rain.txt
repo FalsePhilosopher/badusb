@@ -1,0 +1,47 @@
+DELAY 1000
+GUI r
+DELAY 100
+STRING notepad
+ENTER
+DELAY 100
+STRING @echo off
+ENTER
+ENTER
+DELAY 100
+STRING color 02
+ENTER
+ENTER
+DELAY 100
+STRING mode 1000
+ENTER
+ENTER
+DELAY 100
+STRING :matrixbynima
+ENTER
+ENTER
+DELAY 100
+STRING echo %random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%
+ENTER
+ENTER
+DELAY 100
+STRING goto matrixbynima
+ENTER
+DELAY 100
+CTRL S
+DELAY 200
+REM change %userprofile% to your user or the devices user that your using this on
+STRING %userprofile%\Desktop\matrix.bat
+ENTER
+DELAY 1000
+GUI r
+DELAY 100
+STRING cmd
+ENTER
+DELAY 100
+STRING cd %userprofile%\Desktop\
+ENTER
+DELAY 50
+STRING matrix.bat
+ENTER
+DELAY 1500
+ENTER

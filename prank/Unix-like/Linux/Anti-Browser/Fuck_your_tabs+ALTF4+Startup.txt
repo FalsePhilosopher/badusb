@@ -1,0 +1,7 @@
+REM FalsePhilosopher
+REM WIP
+REM Target linux
+DELAY 500
+CTRL-ALT t
+DELAY 200
+REM write some bash to create CTRL+w and ALT-F4 startup script and run it

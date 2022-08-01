@@ -1,0 +1,14 @@
+REM This project depends on:
+
+libcairo2-dev
+libxi-dev
+libx11-dev
+x11proto-core-dev
+x11proto-dev
+libxt-dev
+libxfixes-dev
+libxinerama-dev
+libxrandr-dev
+libwayland-dev
+
+So unless you add a CVE to gain root and install those thing or the maintainer creates app images of it this one is put on the shelf.

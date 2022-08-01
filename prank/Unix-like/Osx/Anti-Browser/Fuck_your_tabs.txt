@@ -1,0 +1,12 @@
+REM FalsePhilosopher
+REM WIP
+REM Target osx
+ID 05ac:021e Apple:Keyboard
+DELAY 200
+COMMAND SPACE
+DELAY 100
+STRING terminal.app
+DELAY 100
+ENTER
+DELAY 100
+REM write some bash to create CTRL+w script and run it

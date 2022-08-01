@@ -1,0 +1,38 @@
+REM enter settings and change language
+WINDOWS
+DELAY 500
+STRING add input methods
+DELAY 700
+ENTER
+DELAY 1500
+ENTER
+DELAY 700
+STRING english
+DELAY 100
+TAB
+DELAY 100
+TAB
+DELAY 100
+ENTER
+DELAY 100
+TAB
+DELAY 100
+TAB
+DELAY 100
+ENTER
+
+REM Deletes primary language (as long as they only had one other langauge)
+DELAY 500
+SHIFT TAB
+DELAY 70
+SHIFT TAB
+DELAY 70
+SHIFT TAB
+DELAY 70
+ENTER
+
+Closes out of settings, has both ALT and CTRL just incase someone has changed their keybinds
+DELAY 50
+CTRL W
+DELAY 50
+ALT W

