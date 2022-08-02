@@ -13,12 +13,9 @@ WINDOWS d
 DELAY 300
 CTRL-ALT t
 DELAY 1500
-STRING nohup xeyes >/dev/null &
-DELAY 300
-CTRL c
-DELAY 300
-STRING open https://youtu.be/7YvAYIJSSZY?t=53
-DELAY 300
+STRING xeyes 2>/dev/null & open https://youtu.be/7YvAYIJSSZY?t=53 & disown && exit
 ENTER
 DELAY 5000
 STRING f
+DELAY 300
+SPACE
