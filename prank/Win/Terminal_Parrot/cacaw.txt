@@ -1,0 +1,19 @@
+REM Title: Terminal Parrot
+REM Author: FalsePhilosopher
+REM Target: Win10+
+REM Props: Hak5, the community and memes
+REM Version: 1.0
+REM Category: Prank
+REM Let the parrots fly free! CAUTION:Multi color strobing effects
+REM
+REM initialization delay
+DELAY 300
+GUI r
+DELAY 500
+STRING powershell
+ENTER
+DELAY 1500
+STRING $request=[System.Net.HttpWebRequest]::Create("http://parrot.live");$receiveStream=$request.GetResponse().GetResponseStream();$readStream=[System.IO.StreamReader]::new($receiveStream);[console]::TreatControlCAsInput=$true;$initialForegroundColor=[Console]::ForegroundColor;while($line=$readStream.ReadLine()){if([Console]::KeyAvailable){$key=[System.Console]::ReadKey($true);if(($key.modifiers -band [ConsoleModifiers]"control") -and ($key.key -eq "C")){break;}}[Console]::WriteLine($line);}
+ENTER
+DELAY 300
+GUI UPARROW

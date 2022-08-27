@@ -4,7 +4,7 @@ REM Target:  Unix-like tested on kubuntu 22.04
 REM Props: Hak5, the community and memes
 REM Version: 1.0
 REM Category: Recon
-REM Launches terminal, launches xeyes in the BG and opens rockwell's somebodies watching me.
+REM Launches terminal, launches 250 xeyes in the BG and opens rockwell's somebodies watching me.
 REM
 REM initialization delay
 DELAY 300
@@ -13,7 +13,7 @@ WINDOWS d
 DELAY 300
 CTRL-ALT t
 DELAY 1500
-STRING xeyes 2>/dev/null & vlc https://github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Ducky/USBRubberducky/library/prank/Unix-like/Linux/xeyes/SWM.mp4 & disown && exit
+STRING for i in {1 .. 250}; do nohup xeyes >> /dev/null & done & vlc https://github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Ducky/USBRubberducky/library/prank/Unix-like/Linux/xeyes/SWM.mp4 & disown && exit
 ENTER
 DELAY 3000
 STRING f
