@@ -1,0 +1,18 @@
+REM       MacOS-AS-REMAP
+REM       Version 1.0
+REM       OS: macOS 10.4 - (Present)
+REM       Author: NateW
+REM       Requirements: Any DuckyScript Capable Device. In my case, I am building for a FlipperZero.
+REM       Description: Launches terminal, uses hidutil to remap All keys from Q-T, A-G, Z-B to A and Y-\, H-', N-/ to S.
+DELAY 200
+GUI SPACE
+DELAY 500
+STRING Terminal
+DELAY 700
+ENTER
+DELAY 700
+STRING hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc": 0x700000014,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x70000001A,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000008,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000015,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000017,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000004,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000016,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000007,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000009,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x70000000A,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x70000001D,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x70000001B,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000006,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000019,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x700000005,"HIDKeyboardModifierMappingDst": 0x700000004},{"HIDKeyboardModifierMappingSrc": 0x70000001C,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000018,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x70000000C,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000012,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000013,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x70000000B,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x70000000D,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x70000000E,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x70000000F,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000011,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000010,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000036,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x70000002F,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000030,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000031,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000037,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000038,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000033,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000034,"HIDKeyboardModifierMappingDst": 0x700000016}]}'
+DELAY 2000
+ENTER
+#DELAY 1000
+#GUI q - GUI q doesn't work because all the keys got remapped! lol
