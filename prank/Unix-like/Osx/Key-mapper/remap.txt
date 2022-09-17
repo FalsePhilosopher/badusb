@@ -1,0 +1,18 @@
+REM       MacOS-AS-REMAP
+REM       Version 1.0
+REM       OS: macOS 10.4 - (Present)
+REM       Author: NateW
+REM       Requirements: Any DuckyScript Capable Device. In my case, I am building for a FlipperZero.
+REM       Description: Launches terminal, uses hidutil to remap A to S and S to A to be an ASS.
+DELAY 200
+GUI SPACE
+DELAY 500
+STRING Terminal
+DELAY 700
+ENTER
+DELAY 700
+STRING hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc": 0x700000004,"HIDKeyboardModifierMappingDst": 0x700000016},{"HIDKeyboardModifierMappingSrc": 0x700000016,"HIDKeyboardModifierMappingDst": 0x700000004}]}'
+DELAY 1500
+ENTER
+DELAY 700
+GUI q
