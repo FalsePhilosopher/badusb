@@ -1,13 +1,13 @@
 REM ---------CARTMAN SPAM----------
 REM -- by Mr-Savag3 --- 09162022 --
+REM -- updated to 1 line by -------
+REM ---------------- I Am Jakoby --
 REM 
 REM 
 REM DISCLAIMER: While this Ducky file doesn't really do anything illegal, you still shouldn't use it on anyone besides your friends and family.
 REM I am not responsible for any trouble you get in.
 REM 
-REM INSTRUCTIONS: Requires PC running Windows 10/11 with Chrome installed. Probably will work on The Lord's OS, Windows 7, but I haven't tested it.
-REM I suppose it could work with Firefox or other browsers if you change "Chrome.exe" 
-REM in the code to "Firefox.exe," but I haven't tried it. Earplugs recommended.
+REM INSTRUCTIONS: Requires PC running Windows 10/11. Probably will work on The Lord's OS, Windows 7, but I haven't tested it.
 DELAY 1000
 GUI r
 DELAY 1000
@@ -15,171 +15,5 @@ STRING powershell
 DELAY 1000
 ENTER
 DELAY 1000
-STRING $key=[Math]::Ceiling(100/2);$obj=New-Object -ComObject WScript.Shell;for($i=0;$i -lt $key;$i++){$obj.SendKeys([char] 175)}
-REM this bit is from I_Am_Jakoby because he is an absolute legend.
-ENTER
-DELAY 100
-STRING exit
-ENTER
-DELAY 500
-GUI r
-DELAY 250
-STRING chrome.exe
-ENTER
-DELAY 1000
-CTRL l
-DELAY 20
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
-ENTER
-DELAY 500
-UPARROW
-UPARROW
-UPARROW
-CTRL t
-DELAY 50
-STRING https://www.youtube.com/watch?v=U3sAkAWfxLY
+STRING powershell -w h $k=[Math]::Ceiling(100/2);$o=New-Object -ComObject WScript.Shell;for($i=0;$i -lt $k;$i++){$o.SendKeys([char] 175)}; 1..10|foreach {saps https://www.youtube.com/watch?v=U3sAkAWfxLY;sleep 1;$o.SendKeys('f')}
 ENTER
