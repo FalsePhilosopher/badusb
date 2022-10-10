@@ -1,5 +1,8 @@
-# BadUSB_reverseShellInjector
+## Original repo
 https://github.com/tuconnaisyouknow/BadUSB_reverseShellInjector
+
+# BadUSB_reverseShellInjector
+
 # Warning ⚠️
 Everything in this repository is **strictly** for educational purposes. Notice **I am not responsible** for stolen data. **You are responsible** for your actions using developed script for **BadUSB**.
 # About ℹ️

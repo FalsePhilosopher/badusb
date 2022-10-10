@@ -1,5 +1,8 @@
-# Quick-Reverse-Powershell-Rubber-Ducky
+## original repo
 https://github.com/makozort/Quick-Reverse-Powershell-Rubber-Ducky
+
+# Quick-Reverse-Powershell-Rubber-Ducky
+
 A PEN testing script to demonstrate how quickly a reverse shell can be created with the rubber ducky
 
 THIS SCRIPT IS INTENDED FOR USE ON SYSTEMS YOU OWN OR HAVE BEEN GIVEN PERMISSION TO USE, I TAKE NO RESPONSIBILITIES FOR ANY MISUSE
