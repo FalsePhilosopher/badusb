@@ -1,4 +1,4 @@
-REM Title: Activate Linux
+REM Title: Say the magic word
 REM Creator: Brandon Kelly
 REM Modified by: FalsePhilosopher
 REM Target:  Unix-like
