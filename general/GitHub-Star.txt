@@ -1,0 +1,11 @@
+REM Author: Alphax
+REM Description: Stars Your GitHub Repo
+DELAY 1000
+GUI r
+DELAY 150
+STRING https://github.com/FalsePhilosopher/badusb
+ENTER
+DELAY 5000
+TAB
+REPEAT 17
+ENTER
