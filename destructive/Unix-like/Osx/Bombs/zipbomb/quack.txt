@@ -1,7 +1,7 @@
 REM FalsePhilosopher
 REM Target osx untested
 ID 05ac:021e Apple:Keyboard
-DELAY 300
+DELAY 500
 COMMAND SPACE
 DELAY 300
 STRING terminal.app

