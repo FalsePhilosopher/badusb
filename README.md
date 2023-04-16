@@ -1,4 +1,6 @@
-# Flipper zero community ducky payload repo
+# Flipper zero community badusb payload library
+The idea is to put all the fz friendly scripts in one place like the IRDB in one master library so we can all just git pull the updates.
+
 If you are looking for the resources these duckies use or for resources to build your own duckies head over to my [BadUSB-Playground](https://github.com/FalsePhilosopher/BadUSB-Playground) repo.<br>
 
 # Contributing
