@@ -10,10 +10,11 @@ REM Source: https://github.com/UberGuidoZ/OMG-Payloads
 GUI SPACE
 DELAY 300
 STRING Safari
+DELAY 100
 ENTER
 DELAY 500
 GUI t
-https://www.youtube.com/watch?v=xm3YgoEiEDc
+STRING https://www.youtube.com/watch?v=xm3YgoEiEDc
 ENTER
-DELAY 500
+DELAY 1500
 STRING f
