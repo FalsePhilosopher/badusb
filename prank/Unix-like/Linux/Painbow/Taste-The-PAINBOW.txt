@@ -4,8 +4,7 @@ REM Target:  Unix-like
 REM Props: Hak5, the community and memes
 REM Version: 1.0
 REM Category: Prank
-REM Echo's to bashrc/zshrc/config.fish to use script to pipeline the output of whatever shell is being used to lolcat
-REM Depends on lolcat being installed, feel free to PR an appimage of lolcat to make this portable.
+REM wgets a compiled https://github.com/jaseg/lolcat version of lolcat to $HOME/.local/bin and echo's to bashrc/zshrc/config.fish to pipeline the output of whatever shell is being used to lolcat
 DELAY 300
 REM Minimize all windows as that ensures launch happens smoother.
 WINDOWS d
