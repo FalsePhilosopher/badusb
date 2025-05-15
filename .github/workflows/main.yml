@@ -64,6 +64,6 @@ jobs:
           cat badusb-${{ steps.date.outputs.date }}.tar.zst.* > badusb-${{ steps.date.outputs.date }}.tar.zst
           ```
         files: |
-          ${{ steps.check_size.outputs.split == 'true' && format('snapshot-{0}.tar.zst.*', steps.date.outputs.date) || format('snapshot-{0}.tar.zst', steps.date.outputs.date) }}
+          ${{ steps.check_size.outputs.split == 'true' && format('badusb-{0}.tar.zst.*', steps.date.outputs.date) || format('badusb-{0}.tar.zst', steps.date.outputs.date) }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
