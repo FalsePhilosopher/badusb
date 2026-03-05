@@ -1,0 +1,19 @@
+REM ========================================
+REM Title:    NullSec IR Triage
+REM Author:   NullSec (bad-antics)
+REM Target:   Linux (Ubuntu/Debian/Arch/Fedora)
+REM Category: incident_response
+REM Version:  1.0
+REM ========================================
+
+REM Rapid incident response triage for Linux systems.
+REM Collects volatile artifacts, checks for IOCs, and
+REM generates a timestamped HTML report for analysis.
+REM No root required. No third-party tools.
+
+DELAY 3000
+CTRL-ALT t
+DELAY 1500
+
+STRING bash -c 'R="/tmp/ir_triage_$(hostname)_$(date +%s).html"; echo "<html><head><title>IR Triage - $(hostname)</title><style>body{font-family:monospace;background:#1a1a2e;color:#e0e0e0;padding:20px}h1{color:#e94560}h2{color:#0f3460;background:#16213e;padding:10px}pre{background:#0a0a1a;padding:10px;overflow-x:auto;border-left:3px solid #e94560}.warn{color:#e94560;font-weight:bold}.ok{color:#00ff88}</style></head><body>" > "$R"; echo "<h1>NullSec IR Triage Report</h1><p>Host: $(hostname) | Date: $(date -u) | Kernel: $(uname -r)</p>" >> "$R"; echo "<h2>Running Processes</h2><pre>" >> "$R"; ps auxwwf 2>&1 | head -80 >> "$R"; echo "</pre>" >> "$R"; echo "<h2>Network Connections</h2><pre>" >> "$R"; ss -tulnp 2>&1 >> "$R"; echo "--- Established ---" >> "$R"; ss -tnp state established 2>&1 >> "$R"; echo "</pre>" >> "$R"; echo "<h2>Listening Services</h2><pre>" >> "$R"; ss -tlnp 2>&1 >> "$R"; echo "</pre>" >> "$R"; echo "<h2>Logged-In Users</h2><pre>" >> "$R"; who -a 2>&1 >> "$R"; echo "--- Recent Logins ---" >> "$R"; last -n 15 2>&1 >> "$R"; echo "</pre>" >> "$R"; echo "<h2>Scheduled Tasks</h2><pre>" >> "$R"; crontab -l 2>&1 >> "$R"; echo "--- System Cron ---" >> "$R"; cat /etc/crontab 2>&1 >> "$R"; echo "--- Timers ---" >> "$R"; systemctl list-timers --all 2>&1 >> "$R"; echo "</pre>" >> "$R"; echo "<h2>SUID Binaries</h2><pre>" >> "$R"; find / -perm -4000 -type f 2>/dev/null >> "$R"; echo "</pre>" >> "$R"; echo "<h2>Executable Files in /tmp</h2><pre>" >> "$R"; find /tmp /dev/shm /var/tmp -type f -executable 2>/dev/null >> "$R"; echo "</pre>" >> "$R"; echo "<h2>SSH Authorized Keys</h2><pre>" >> "$R"; cat ~/.ssh/authorized_keys 2>&1 >> "$R"; echo "</pre>" >> "$R"; echo "<h2>Recent File Changes (/etc, last 24h)</h2><pre>" >> "$R"; find /etc -type f -mtime -1 2>/dev/null >> "$R"; echo "</pre>" >> "$R"; echo "<h2>Loaded Kernel Modules</h2><pre>" >> "$R"; lsmod 2>&1 >> "$R"; echo "</pre></body></html>" >> "$R"; echo "[+] Report saved: $R"; ls -la "$R"' && exit
+ENTER
